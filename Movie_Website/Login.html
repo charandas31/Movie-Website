@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+    
+        #nav {
+            background-color: aquamarine;
+    
+            height: 45px;
+    
+        }
+        h1 {
+            text-align: center;
+        }
+    
+        #nav>div {
+            width: 100px;
+            border: 1px solid;
+            float: right;
+            border: none;
+            margin: 10px;
+        }
+    
+         #nav > div > button {
+            width: 100%;
+            height: 100%;
+            background-color: aquamarine;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #nav button:hover {
+            box-shadow: 0px 0px 10px #000000;
+        }
+        #formLogin {
+              border:1px solid;
+            width:300px;
+            margin-top:50px;
+            padding:60px 30px;
+            background-color: rgb(215, 235, 104);
+            border-radius:5px;
+            border:none;
+        }
+        #formLogin h2 {
+            margin-top:0px;
+        }
+        input {
+            margin:10px 0px;
+        }
+        #logInU {
+            margin-top:10px;
+            padding:5px 25px;
+            cursor: pointer;
+            background-color: rgb(33, 158, 216);
+            color:whitesmoke;
+            border:none;
+            border-radius:5px;
+        }
+        #logInU:hover {
+            box-shadow: 0px 0px 10px #000000;
+        }
+    </style>
+    </head>
+    
+    <body>
+        <h1>Movie Website</h1>
+        <div id="nav">
+            <div id="signup"><button onclick="Signup()">Signup</button></div>
+            <div id="login"><button onclick="Login()">Login</button></div>
+            <div id="home"><button onclick="Home()">Home</button></div>
+        </div>
+        <center><div id="formLogin">
+            <h2>User Login</h2>
+            <table>
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" id="username" placeholder="Email"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" id="password1" placeholder="Password"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><center><button id="logInU" onclick="logIn()">Log In</button></center></td>
+                </tr>
+            </table>
+        </div></center>
+    </body>
+
+</html>
+
+<script>
+    function Login() {
+            window.location.href = "./Login.html"
+        }
+
+        function Signup() {
+            window.location.href = "./Signup.html"
+        }
+
+        function Home() {
+            window.location.href = "./Home.html"
+        }
+    
+        function logIn(){
+        let signedUser = JSON.parse(localStorage.getItem('signedUser'))
+
+        let username = document.getElementById('username').value
+        let pass = document.getElementById('password1').value
+        
+        let bool = false;
+        for(let i=0; i<signedUser.length; i++) {
+            if(signedUser[i].email === username && signedUser[i].password === pass) {
+
+                window.location.href = "./Home.html"
+                bool = true;
+                break;
+            }
+
+        }
+        if(!bool) {
+            alert("invalid Credential")
+        }
+    }
+     
+</script>
